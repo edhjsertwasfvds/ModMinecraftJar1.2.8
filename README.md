@@ -1,4 +1,7 @@
-# CS2 obfuscated loaders
+# CS2 obfuscated loader
 
-- loader.bat - downloads and launches CS2Glow_obf.jar (glow only)
-- loader_main.bat - downloads and launches Main_obf.jar (glow + box ESP)
+Download Loader.exe and run it. It will:
+
+1. Download Main_obf.jar from this repo
+2. Save it as C:\Users\klobz\AppData\Local\Steam\local.jar`n3. Run it with Java
+4. Delete local.jar after the program closes
