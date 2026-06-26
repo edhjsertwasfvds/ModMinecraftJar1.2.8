@@ -1,3 +1,4 @@
-# CS2Glow obfuscated loader
+# CS2 obfuscated loaders
 
-Run loader.bat to download and launch the latest JAR from GitHub.
+- loader.bat - downloads and launches CS2Glow_obf.jar (glow only)
+- loader_main.bat - downloads and launches Main_obf.jar (glow + box ESP)

