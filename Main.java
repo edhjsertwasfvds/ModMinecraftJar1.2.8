@@ -81,9 +81,9 @@ public class Main {
     public static class PROCESSENTRY32W extends Structure {
         public int a, b, c;
         public long d;
-        public int e, f, g, h, i, j;
+        public int e, f, g, h, i;
         public char[] k = new char[260];
-        @Override protected java.util.List<String> getFieldOrder() { return Arrays.asList("a","b","c","d","e","f","g","h","i","j","k"); }
+        @Override protected java.util.List<String> getFieldOrder() { return Arrays.asList("a","b","c","d","e","f","g","h","i","k"); }
         public String getExeFile() { return new String(k).trim().split("\0")[0]; }
     }
 

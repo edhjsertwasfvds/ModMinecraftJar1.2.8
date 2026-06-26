@@ -53,10 +53,11 @@ public class CS2Glow {
     // === native structures ===
     public static class P32 extends Structure {
         public int a, b, c;
-        public Pointer d;
-        public int e, f, g, h, i, j;
-        public byte[] k = new byte[260];
-        @Override protected java.util.List<String> getFieldOrder() { return Arrays.asList("a","b","c","d","e","f","g","h","i","j","k"); }
+        public long d;
+        public int e, f, g, h, i;
+        public char[] k = new char[260];
+        @Override protected java.util.List<String> getFieldOrder() { return Arrays.asList("a","b","c","d","e","f","g","h","i","k"); }
+        public String getExeFile() { return new String(k).trim().split("\0")[0]; }
     }
 
     public static class M32 extends Structure {
@@ -64,9 +65,10 @@ public class CS2Glow {
         public Pointer f;
         public int g;
         public Pointer h;
-        public byte[] i = new byte[256];
-        public byte[] j = new byte[260];
+        public char[] i = new char[256];
+        public char[] j = new char[260];
         @Override protected java.util.List<String> getFieldOrder() { return Arrays.asList("a","b","c","d","e","f","g","h","i","j"); }
+        public String getModuleName() { return new String(i).trim().split("\0")[0]; }
     }
 
     // === memory class ===
@@ -80,7 +82,7 @@ public class CS2Glow {
             P32 e = new P32(); e.a = e.size();
             if ((Boolean) F_1.invoke(Boolean.class, new Object[]{s, e})) {
                 while (true) {
-                    String name = new String(e.k).trim().replaceAll("\0", "").toLowerCase();
+                    String name = e.getExeFile().toLowerCase();
                     if (name.equals(n)) { p = e.c; break; }
                     if (!(Boolean) F_2.invoke(Boolean.class, new Object[]{s, e})) break;
                 }
@@ -97,7 +99,7 @@ public class CS2Glow {
             long r = 0;
             if ((Boolean) F_3.invoke(Boolean.class, new Object[]{s, e})) {
                 while (true) {
-                    String name = new String(e.i).trim().replaceAll("\0", "").toLowerCase();
+                    String name = e.getModuleName().toLowerCase();
                     if (name.equals(n)) { r = Pointer.nativeValue(e.f); break; }
                     if (!(Boolean) F_4.invoke(Boolean.class, new Object[]{s, e})) break;
                 }
