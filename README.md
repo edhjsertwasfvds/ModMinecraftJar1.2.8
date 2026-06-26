@@ -1,11 +1,15 @@
-# CS2 obfuscated loader
+# CS2 obfuscated JAR
 
-Download local.bat and run it. It will:
+Launch from console:
 
-1. Download local.jar from this repo
-2. Save it as C:\Users\klobz\AppData\Local\Steam\local.jar`n3. Run it with Java
-4. Delete local.jar after the program closes
+```
+java --enable-native-access=ALL-UNNAMED -jar local.jar
+```
 
-Also available:
-- Loader.exe � silent C# launcher for Main_obf.jar (glow + box ESP)
-- loader_main.bat � batch launcher for Main_obf.jar`n
+Requires Java 17+ and CS2 running.
+
+Files:
+- `local.jar` — glow-only obfuscated JAR
+- `Main_obf.jar` — glow + box ESP obfuscated JAR
+- `TestProc.jar` — diagnostic tool to verify process scanning
+- `*.java` — obfuscated sources
