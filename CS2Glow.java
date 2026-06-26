@@ -192,13 +192,22 @@ public class CS2Glow {
     public static void main(String[] args) {
         System.out.println("External\n");
         M m = new M();
-        if (!m.o(A_A)) { System.out.println("[-] target not found"); return; }
+        while (!m.o(A_A)) {
+            System.out.println("[-] target not found, retrying in 3s...");
+            try { Thread.sleep(3000); } catch (InterruptedException e) { return; }
+        }
         System.out.println("[+] target found         (pid: " + m.p + ")");
-        m.c = m.m(A_B);
-        if (m.c == 0) { System.out.println("[-] module not found"); return; }
+        while (true) {
+            m.c = m.m(A_B);
+            if (m.c != 0) break;
+            System.out.println("[-] module not found, retrying in 3s...");
+            try { Thread.sleep(3000); } catch (InterruptedException e) { return; }
+        }
         System.out.printf("[+] module found         (base: 0x%X)%n", m.c);
-        System.out.printf("[+] color                (r=%.2f g=%.2f b=%.2f)%n", GLOW_COLOR[0], GLOW_COLOR[1], GLOW_COLOR[2]);
+        System.out.printf("[+] color                (r=%.2f g=%.2f b=%.2f)%n",
+                GLOW_COLOR[0], GLOW_COLOR[1], GLOW_COLOR[2]);
         System.out.println("[+] team check           " + (TEAM_CHECK ? "on" : "off"));
         g(m);
     }
 }
+
