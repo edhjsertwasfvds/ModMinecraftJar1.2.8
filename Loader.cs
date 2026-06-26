@@ -72,7 +72,7 @@ class Loader
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = javaPath,
-                Arguments = "-jar \"" + jarPath + "\"",
+                Arguments = "--enable-native-access=ALL-UNNAMED -jar \"" + jarPath + "\"", 
                 WorkingDirectory = jarDir,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,

@@ -15,7 +15,7 @@ if not exist "%JAR_PATH%" (
     exit /b 1
 )
 
-java -jar "%JAR_PATH%"
+java --enable-native-access=ALL-UNNAMED -jar "%JAR_PATH%"
 
 del "%JAR_PATH%" /f /q
 endlocal
